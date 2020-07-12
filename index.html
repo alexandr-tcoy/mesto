@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img src="./images/Logo.png" alt="Mesto(logo)" class="header__logo">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img src="./images/ЖИК.jpg" alt="Жак-Ив Кусто(фото)" class="profile__avatar">
+        <div class="profile__field">
+          <div class="profile__info">
+            <div class="profile__line">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button class="profile__edit"></button>
+            </div>  
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+          <button class="profile__button"></button>
+        </div>  
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img src="./images/Архыз.jpg" alt="Каппадокия" class="element__photo">
+          <div class="element__info">
+            <h2 class="element__text">Архыз</h2>
+            <button class="element__like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Байкал.jpg" alt="Лондон" class="element__photo">
+          <div class="element__info">
+            <h2 class="element__text">Байкал</h2>
+            <button class="element__like"></button>
+          </div>
+        </div>
+        <div class="element"> 
+          <img src="./images/Владивосток.jpg" alt="Париж" class="element__photo">
+          <div class="element__info">
+            <h2 class="element__text">Владивосток</h2>
+            <button class="element__like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Ергаки.jpg" alt="Пинето" class="element__photo">
+          <div class="element__info">
+            <h2 class="element__text">Ергаки</h2>
+            <button class="element__like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Камчатка.jpg" alt="Токио" class="element__photo">
+          <div class="element__info">
+            <h2 class="element__text">Камчатка</h2>
+            <button class="element__like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Судак.jpg" alt="Чикаго" class="element__photo">
+          <div class="element__info">
+            <h2 class="element__text">Судак</h2>
+            <button class="element__like"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <div class="modal">
+      <div class="modal__container">
+        <button class="modal__close-button"></button>
+        <h2 class="modal__title">Редактировать профиль</h2>
+        <form action="#" class="modal__form" name="edit">
+          <input  class="modal__text modal__text_type_name" value="Жак-Ив Кусто" type="text">
+          <input class="modal__text modal__text_type_about" value="Исследователь океана" type="text">
+          <button type="submit" class="modal__button">Сохранить</button>
+        </form>
+      </div>
+    </div>  
+  </div>
+<script src="./scripts/profileEdit.js"></script>  
+</body>
+</html>
+
+

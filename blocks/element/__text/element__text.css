@@ -1,0 +1,7 @@
+.element__text {
+    width: 70%;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+}

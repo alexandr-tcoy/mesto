@@ -1,0 +1,22 @@
+.modal__close-button {
+    background: url(../../../images/Close.png);
+    width: 40px;
+    min-height: 40px;
+    max-width: 100%;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+}
+
+.modal__close-button:hover {
+    opacity: .6;
+}
+
+.modal__close-button:focus {
+    outline: none;
+}

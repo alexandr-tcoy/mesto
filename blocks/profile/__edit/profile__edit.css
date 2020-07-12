@@ -1,0 +1,18 @@
+.profile__edit {
+    background: url(../../../images/Карандаш.png);
+    padding: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px;
+    max-width: 100%;
+    border: 1px solid #FFFFFF;
+    cursor: pointer;
+}
+
+.profile__edit:hover {
+    opacity: .6;
+}
+
+.profile__edit:focus {
+    outline: none;
+}

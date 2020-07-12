@@ -1,17 +1,19 @@
-# Проект 4: Место
+# [Проект 4: Место](https://alexandr-tcoy.github.io/mesto/)
 
-### Обзор
+## Обзор
 
-* Figma
-* Картинки
+Первая работа, которая знакомит нас с новым миром интерактива [Java Script](https://ru.wikipedia.org/wiki/JavaScript).
 
-**Figma**
+Благодаря проекту, были изучены такие инструменты:
+* [const](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/const)
+* [querySelector](https://developer.mozilla.org/ru/docs/Web/API/Document/querySelector)
+* [addEventListener](https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener)
+* [classList](https://developer.mozilla.org/ru/docs/Web/API/Element/classList)
+* [textContent](https://developer.mozilla.org/ru/docs/Web/API/Node/textContent)
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
 
-**Картинки**
+## Планы
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+Еще много работы, думаю мы реализуем возможность добавления "новых мест", смены фотографии пользователя и кончно же сердечки!
 
-Удачи!
+### https://alexandr-tcoy.github.io/mesto/

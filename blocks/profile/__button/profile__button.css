@@ -1,0 +1,29 @@
+.profile__button {
+    background: url(../../../images/Плюс.png);
+    padding: 23px 64px 23px 64px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 150px;
+    max-width: 100%;
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.profile__button:focus {
+    outline: none;
+}
+
+.profile__button:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 595px) {
+    .profile__button {
+        width: 282px;   
+        max-width: 100%;
+    }
+  }
+
+
+

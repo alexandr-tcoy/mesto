@@ -1,0 +1,23 @@
+.modal__button {
+    width: 358px;
+    max-width: 100%;
+    margin-top: 48px;
+    margin-bottom: 36px;
+    font-size: 18px;
+    line-height: 1.22;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 14px 0 19px 0;
+    border: 0;
+    background: #000000;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.modal__button:hover {
+    opacity: .8;
+}
+
+.modal__button:focus {
+    outline: none;
+}
