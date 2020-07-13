@@ -5,6 +5,7 @@
     padding: 40px 0 51px 0;
     color: #FFFFFF;
     display: flex;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 595px) {

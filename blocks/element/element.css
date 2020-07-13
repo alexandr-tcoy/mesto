@@ -2,64 +2,6 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: 78% 22%;
-    width: 282px;
     max-width: 100%;
     box-sizing: border-box;
 } 
-
-
-
-
-.element__photo {
-    width: 282px;
-    max-width: 100%;
-    height: 282px;
-    max-height: 100%;
-    border-radius: 10px 10px 0 0;
-    box-sizing: border-box;
-}  
-
-
-.element__info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    background: #FFFFFF;
-    border-radius: 0 0 10px 10px;
-    overflow: hidden;
-}
-
-
-
-
-.element__text {
-    width: 70%;
-    max-width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin: 0;
-}
-
-
-
-
-
-
-
-
-.element__like {
-    background: url(../images/Любовь.png);
-    padding: 0;
-    border: none;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 21px;
-    max-width: 100%;
-    min-height: 18px;
-    cursor: pointer;
-}
-
-.element__like:focus {
-    outline: none;
-}
