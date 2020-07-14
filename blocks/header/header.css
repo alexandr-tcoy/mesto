@@ -2,7 +2,7 @@
     width: 882px;
     max-width: 100%;
     margin: 0 auto;
-    padding: 45px 0 0 0;
+    padding-top: 45px;
     border-bottom: 1px solid #545454;
     box-sizing: border-box;
 }

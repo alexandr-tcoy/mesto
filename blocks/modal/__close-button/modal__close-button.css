@@ -1,5 +1,5 @@
 .modal__close-button {
-    background: url(../../../images/Close.png);
+    background: url(../../../images/cross.svg);
     width: 40px;
     min-height: 40px;
     max-width: 100%;
