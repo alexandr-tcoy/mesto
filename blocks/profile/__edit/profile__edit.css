@@ -11,6 +11,7 @@
 
 .profile__edit:hover {
     opacity: .6;
+    transition: linear .6s;
 }
 
 .profile__edit:focus {

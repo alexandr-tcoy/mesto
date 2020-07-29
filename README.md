@@ -1,8 +1,8 @@
-# [Проект 4: Место](https://alexandr-tcoy.github.io/mesto/)
+# [Проект 5: Место](https://alexandr-tcoy.github.io/mesto/)
 
 ## Обзор
 
-Первая работа, которая знакомит нас с новым миром интерактива [Java Script](https://ru.wikipedia.org/wiki/JavaScript).
+Вторая работа, которая знакомит нас с новым, более сложным и интересным миром интерактива [Java Script](https://ru.wikipedia.org/wiki/JavaScript).
 
 Благодаря проекту, были изучены такие инструменты:
 * [const](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/const)
@@ -14,6 +14,6 @@
 
 ## Планы
 
-Еще много работы, думаю мы реализуем возможность добавления "новых мест", смены фотографии пользователя и кончно же сердечки!
+Еще много работы, думаю, как минимум мы реализуем возможность изменения фотографии профиля!
 
 ### https://alexandr-tcoy.github.io/mesto/

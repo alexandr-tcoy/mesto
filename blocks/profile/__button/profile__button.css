@@ -16,6 +16,7 @@
 
 .profile__button:hover {
     opacity: .6;
+    transition: linear .6s;
 }
 
 @media screen and (max-width: 595px) {
@@ -24,6 +25,5 @@
         max-width: 100%;
     }
   }
-
 
 

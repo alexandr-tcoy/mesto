@@ -26,65 +26,51 @@
         </div>  
       </section>
       <section class="elements">
-        <div class="element">
-          <img src="./images/arhiz.jpg" alt="Архыз" class="element__photo">
-          <div class="element__info">
-            <h2 class="element__text">Архыз</h2>
-            <button type="submit" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/baikal.jpg" alt="Байкал" class="element__photo">
-          <div class="element__info">
-            <h2 class="element__text">Байкал</h2>
-            <button type="submit" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element"> 
-          <img src="./images/vladivostok.jpg" alt="Владивосток" class="element__photo">
-          <div class="element__info">
-            <h2 class="element__text">Владивосток</h2>
-            <button type="submit" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/ergaki.jpg" alt="Ергаки" class="element__photo">
-          <div class="element__info">
-            <h2 class="element__text">Ергаки</h2>
-            <button type="submit" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/kamchatka.jpg" alt="Камчатка" class="element__photo">
-          <div class="element__info">
-            <h2 class="element__text">Камчатка</h2>
-            <button type="submit" class="element__like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/sudak.jpg" alt="Судак" class="element__photo">
-          <div class="element__info">
-            <h2 class="element__text">Судак</h2>
-            <button type="submit" class="element__like"></button>
-          </div>
-        </div>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="modal">
+    <div class="modal modal_type_edit">
       <div class="modal__container">
         <button type="submit" class="modal__close-button"></button>
         <h2 class="modal__title">Редактировать профиль</h2>
         <form action="#" class="modal__form" name="edit">
-          <input class="modal__text modal__text_type_name" name="name" value="Жак-Ив Кусто" type="text">
-          <input class="modal__text modal__text_type_about" name="about" value="Исследователь океана" type="text">
+          <input class="modal__text modal__text_type_name" name="name" value="Жак-Ив Кусто" type="text" required>
+          <input class="modal__text modal__text_type_about" name="about" value="Исследователь океана" type="text" required>
           <button type="submit" class="modal__button">Сохранить</button>
         </form>
       </div>
     </div>  
+    <div class="modal modal_type_add">
+      <div class="modal__container">
+        <button type="submit" class="modal__close-button"></button>
+        <h2 class="modal__title">Новое место</h2>
+        <form action="#" class="modal__form" name="add">
+          <input class="modal__text modal__text_type_place" name="place" placeholder="Название" type="text" required>
+          <input class="modal__text modal__text_type_url" name="url" placeholder="Ссылка на картинку" type="text" required>
+          <button type="submit" class="modal__button">Создать</button>
+        </form>
+      </div>
+    </div>  
+    <div class="modal modal_type_img">
+      <div class="modal__figure">
+        <button type="submit" class="modal__close-button"></button>  
+        <img class="modal__img" src="" alt="">
+        <h3 class="modal__under-title"></h3>
+      </div>
+    </div>  
   </div>
+  <template class="template-card">
+  <div class="element">
+    <button type="submit" class="element__delete"></button>
+    <img src="" alt="" class="element__photo">
+    <div class="element__info">
+      <h2 class="element__text"></h2>
+      <button type="submit" class="element__like"></button>
+    </div>
+  </div>
+  </template>
 <script src="./scripts/profileEdit.js"></script>  
 </body>
 </html>

@@ -1,0 +1,22 @@
+.element__like_active {
+    background: url(../../../../images/like_heart_active.svg);
+    padding: 0;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    max-width: 21px;
+    width: 100%;
+    height: 18px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.element__like_active:focus {
+    outline: none;
+}
+
+.element__like_active:hover {
+    transition: opacity .6s;
+}
+

@@ -1,0 +1,9 @@
+.modal__img {
+    object-position: center;
+    object-fit: cover;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    max-width: 70vw;
+    max-height: 70vh;
+}
