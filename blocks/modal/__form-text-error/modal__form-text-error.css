@@ -1,0 +1,13 @@
+.modal__form-text-error {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    display: block; 
+    min-height: 12px;
+    padding: 0;
+    margin: 5px 0 13px 0;
+    color: #FF0000;
+    opacity: 0;
+    transition: opacity 0.6s linear;
+}

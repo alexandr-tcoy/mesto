@@ -32,23 +32,35 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
     <div class="modal modal_type_edit">
-      <div class="modal__container">
+      <div class="modal__container" novalidate>
         <button type="submit" class="modal__close-button"></button>
         <h2 class="modal__title">Редактировать профиль</h2>
         <form action="#" class="modal__form" name="edit">
-          <input class="modal__text modal__text_type_name" name="name" value="Жак-Ив Кусто" type="text" required>
-          <input class="modal__text modal__text_type_about" name="about" value="Исследователь океана" type="text" required>
+          <label class="modal__form-field">
+            <input class="modal__text modal__text_type_name" name="name" id="name-input" value="Жак-Ив Кусто" type="text"  minlength="2" maxlength="40" autocomplete="off" required>
+            <span id="name-input-error" class="modal__form-text-error"></span>
+          </label>
+          <label class="modal__form-field">
+            <input class="modal__text modal__text_type_about" name="about" id="about-input" value="Исследователь океана" type="text"  minlength="2" maxlength=200 autocomplete="off" required>
+            <span id="about-input-error" class="modal__form-text-error"></span>
+          </label>
           <button type="submit" class="modal__button">Сохранить</button>
         </form>
       </div>
-    </div>  
+    </div> 
     <div class="modal modal_type_add">
-      <div class="modal__container">
+      <div class="modal__container" novalidate>
         <button type="submit" class="modal__close-button"></button>
         <h2 class="modal__title">Новое место</h2>
         <form action="#" class="modal__form" name="add">
-          <input class="modal__text modal__text_type_place" name="place" placeholder="Название" type="text" required>
-          <input class="modal__text modal__text_type_url" name="url" placeholder="Ссылка на картинку" type="text" required>
+          <label class="modal__form-field">
+            <input class="modal__text modal__text_type_place" name="place" id="place-input" placeholder="Название" type="text" minlength="1" maxlength="30" autocomplete="off" required>
+            <span id="place-input-error" class="modal__form-text-error"></span>
+          </label>
+          <label class="modal__form-field">
+            <input class="modal__text modal__text_type_url" name="url" id="url-input" placeholder="Ссылка на картинку" type="url" autocomplete="off" required>
+            <span id="url-input-error" class="modal__form-text-error"></span>
+          </label>
           <button type="submit" class="modal__button">Создать</button>
         </form>
       </div>
@@ -59,7 +71,7 @@
         <img class="modal__img" src="" alt="">
         <h3 class="modal__under-title"></h3>
       </div>
-    </div>  
+    </div> 
   </div>
   <template class="template-card">
   <div class="element">
@@ -71,6 +83,7 @@
     </div>
   </div>
   </template>
-<script src="./scripts/profileEdit.js"></script>  
+<script src="./scripts/index.js"></script>  
+<script src="./scripts/validate.js"></script> 
 </body>
 </html>

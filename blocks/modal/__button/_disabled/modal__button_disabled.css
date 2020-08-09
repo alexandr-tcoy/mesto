@@ -1,0 +1,8 @@
+.modal__button_disabled {
+    border: 1px solid #000000;
+    box-sizing: border-box; 
+    border-radius: 2px;
+    color: #000000;
+    background:transparent;
+    opacity: .2;
+}
