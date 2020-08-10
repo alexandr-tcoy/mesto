@@ -70,7 +70,8 @@ function modalInputs (modal) {
     };
 };
 
-function profileInputs () {
+function profileInputs(){
+
 };
 
 function editFormSubmitHandler(evt) {
@@ -98,7 +99,7 @@ const clickImg = (evt) => {
     console.log(evt.target.src);
     modalImg.src = evt.target.src;
     modalUnderTitle.textContent = evt.target.closest(".element").querySelector(".element__text").textContent;
-    modalImgOpenImgState.alt = evt.target.alt;
+    modalImg.alt = evt.target.alt;
 };
 
 const toggleLike = (evt) => {
@@ -209,5 +210,4 @@ const  toggleEscape = (modal) => {
         eventListenersRemoveEscape(modal);
         modalInputs (modal);
     };
-        console.log("Reset");
 };
