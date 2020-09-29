@@ -66,14 +66,12 @@ const enableValidation = ({containerSelector, ...remain}) => {
 
 enableValidation(modalSet);
 
-function  modalContainerReset(modal, {containerSelector, inputListSelector, buttonSelector, ...rest}){
-    const specificModalContainer =  modal.querySelector(containerSelector);
-    const specificInputListFormList = Array.from(specificModalContainer.querySelectorAll(inputListSelector));
-    const specificButton = specificModalContainer.querySelector(buttonSelector);
-    // specificModalContainer.reset(); 
-    profileInputs ();
-    specificInputListFormList.forEach((specificInputListFormListElement) => {
-        hideInputError(specificModalContainer, specificInputListFormListElement, rest);
-        toggleButtonState(specificInputListFormList, specificButton, rest);
-        });
-    };
+function  modalContainerReset(modal, {containerSelector, inputListSelector, buttonSelector, ...rest}){ 
+    const specificModalContainer =  modal.querySelector(containerSelector); 
+    const specificInputListFormList = Array.from(specificModalContainer.querySelectorAll(inputListSelector)); 
+    const specificButton = specificModalContainer.querySelector(buttonSelector); 
+    specificInputListFormList.forEach((specificInputListFormListElement) => { 
+        hideInputError(specificModalContainer, specificInputListFormListElement, rest); 
+        toggleButtonState(specificInputListFormList, specificButton, rest); 
+        }); 
+    }; 
