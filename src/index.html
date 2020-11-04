@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+  <title>Mesto</title>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img src="./images/logo.svg" alt="Место(логотип)" class="header__logo">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img src="./images/jacques.jpg" alt="Жак-Ив Кусто(фото)" class="profile__avatar">
+        <div class="profile__field">
+          <div class="profile__info">
+            <div class="profile__line">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button type="submit" class="profile__edit"></button>
+            </div>  
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+          <button type="submit" class="profile__button"></button>
+        </div>  
+      </section>
+      <section class="elements">
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <div class="modal modal_type_edit">
+      <div class="modal__container" novalidate>
+        <button type="submit" class="modal__close-button"></button>
+        <h2 class="modal__title">Редактировать профиль</h2>
+        <form action="#" class="modal__form" name="edit">
+          <label class="modal__form-field">
+            <input class="modal__text modal__text_type_name" name="name" id="name-input" value="Жак-Ив Кусто" type="text"  minlength="2" maxlength="40" autocomplete="off" required>
+            <span id="name-input-error" class="modal__form-text-error"></span>
+          </label>
+          <label class="modal__form-field">
+            <input class="modal__text modal__text_type_about" name="about" id="about-input" value="Исследователь океана" type="text"  minlength="2" maxlength=200 autocomplete="off" required>
+            <span id="about-input-error" class="modal__form-text-error"></span>
+          </label>
+          <button type="submit" class="modal__button">Сохранить</button>
+        </form>
+      </div>
+    </div> 
+    <div class="modal modal_type_add">
+      <div class="modal__container" novalidate>
+        <button type="submit" class="modal__close-button"></button>
+        <h2 class="modal__title">Новое место</h2>
+        <form action="#" class="modal__form" name="add">
+          <label class="modal__form-field">
+            <input class="modal__text modal__text_type_place" name="place" id="place-input" placeholder="Название" type="text" minlength="1" maxlength="30" autocomplete="off" required>
+            <span id="place-input-error" class="modal__form-text-error"></span>
+          </label>
+          <label class="modal__form-field">
+            <input class="modal__text modal__text_type_url" name="url" id="url-input" placeholder="Ссылка на картинку" type="url" autocomplete="off" required>
+            <span id="url-input-error" class="modal__form-text-error"></span>
+          </label>
+          <button type="submit" class="modal__button">Создать</button>
+        </form>
+      </div>
+    </div>  
+    <div class="modal modal_type_img">
+      <div class="modal__figure">
+        <button type="submit" class="modal__close-button"></button>  
+        <img class="modal__img" src="#" alt="#">
+        <h3 class="modal__under-title"></h3>
+      </div>
+    </div> 
+  </div>
+  <template class="template-card">
+  <div class="element">
+    <button type="submit" class="element__delete"></button>
+    <img src="#" alt="#" class="element__photo">
+    <div class="element__info">
+      <h2 class="element__text"></h2>
+      <button type="submit" class="element__like"></button>
+    </div>
+  </div>
+  </template>
+  <!-- <script type="module" src="./scripts/index.js"></script>  -->
+</body>
+</html>
+
