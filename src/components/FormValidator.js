@@ -84,7 +84,7 @@ export default class FormValidator {
 
   hideAllErrors() {
     const inputElements = Array.from(
-      this._formElement.querySelectorAll(".modal__text")
+      this._formElement.querySelectorAll(this._inputSelector)
     );
     const errorElement = Array.from(
       this._formElement.querySelectorAll(".modal__form-text-error")

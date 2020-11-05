@@ -16,13 +16,13 @@ import {
     saveAddPlaceModal,
     saveEditProfileModal,
     elements
-} from '../scripts/initialData.js';
+} from "../scripts/initialData.js";
 
-import FormValidator from '../components/FormValidator.js';
-import Section from '../components/Section.js';
-import ModalWithImage from '../components/ModalWithImage.js';
-import ModalWithForm from '../components/ModalWithForm.js';
-import UserInfo from '../components/UserInfo.js';
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import ModalWithImage from "../components/ModalWithImage.js";
+import ModalWithForm from "../components/ModalWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 const modalProfileFormValidator = new FormValidator(validationConfig, editProfileModal);
 modalProfileFormValidator.enableValidation();
@@ -30,8 +30,8 @@ modalProfileFormValidator.enableValidation();
 const modalPlaceFormValidator = new FormValidator(validationConfig, addPlaceModal);
 modalPlaceFormValidator.enableValidation();
 
-function addCard(name, link) {
-    const card = new Card(name, link, '.template-card', handleCardClick);
+function getCard(name, link) {
+    const card = new Card(name, link, ".template-card", handleCardClick);
     const cardElement = card.generateCard();
 
     return cardElement;
@@ -40,9 +40,9 @@ function addCard(name, link) {
 const cardList = new Section({
     data: initialCards,
     renderer: (item) => {
-        cardList.addItem(addCard(item.name, item.link));
+        cardList.addItem(getCard(item.name, item.link));
     }
-}, '.elements');
+}, ".elements");
 
 cardList.renderItems();
 
@@ -59,7 +59,7 @@ const editModalProfile = new ModalWithForm(editProfileModal, () => {
 })
 
 const addModalPlace = new ModalWithForm(addPlaceModal, (data) => {
-    cardList.addItem(addCard(data.title, data.link));
+    cardList.addItem(getCard(data.place, data.url));
     addModalPlace.close();
 })
 

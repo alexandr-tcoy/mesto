@@ -6,3 +6,12 @@
     border-radius: 10px 10px 0 0;
     box-sizing: border-box;
 }  
+
+.element__photo:hover {
+    opacity: .8;
+    transition: linear .2s;
+}
+
+.element__photo:focus {
+    outline: none;
+}

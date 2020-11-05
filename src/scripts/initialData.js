@@ -18,7 +18,7 @@ export const imageModal = document.querySelector('.modal_type_img');
 export const closeImageModal = imageModal.querySelector('.modal__close-button');
 export const imgModal = imageModal.querySelector(".modal__img");
 export const titleImageModal = imageModal.querySelector(".modal__under-title");
-export const elements = document.querySelector('.elements');
+export const elements = document.querySelector('.elements__list');
 
 export const initialCards = [  
     {  

@@ -39,16 +39,16 @@ export default class Card {
       .querySelector(".element__like")
       .classList.toggle("element__like_active");
   }
-
+  
   _setEventListeners() {
     this._element
       .querySelector(".element__delete")
       .addEventListener("click", this._deleteCard);
-
+      
     this._element
       .querySelector(".element__like")
       .addEventListener("click", this._likeCard);
-
+      
     this._element.querySelector('.element__photo').addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });

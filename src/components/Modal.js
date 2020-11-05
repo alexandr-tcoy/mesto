@@ -25,12 +25,12 @@ export default class Modal {
         this._modalSelector.classList.add('modal_is-open');
         document.addEventListener('keydown', this._closeEsc);
     }
-
+    
     close() {
         this._modalSelector.classList.remove('modal_is-open');
         document.removeEventListener('keydown', this._closeEsc);
     }
-
+    
     setEventListeners() {
         this._modalSelector.addEventListener('click', this._closeOverlay.bind(this));
         this._closeButton.addEventListener('click', this._handleCloseButton.bind(this));
