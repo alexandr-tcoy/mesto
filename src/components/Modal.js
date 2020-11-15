@@ -1,19 +1,19 @@
 export default class Modal {
     constructor(modalSelector) {
         this._modal = modalSelector;
-        this._closeButton = this._modal.querySelector('.modal__close-button');
-        this._submitButton = this._modal.querySelector('.modal__button');
+        this._closeButton = this._modal.querySelector(".modal__close-button");
+        this._submitButton = this._modal.querySelector(".modal__button");
         this._handlerEscClose = this._handlerEscClose.bind(this);
     }
 
     _handlerEscClose(evt) {
-        if (evt.key === 'Escape') {
+        if (evt.key === "Escape") {
             this.close();
         }
     }
     
     _closeByOverlay(evt) {
-        if (evt.target.classList.contains('modal')) {
+        if (evt.target.classList.contains("modal")) {
             this.close();
         }
     }
@@ -24,41 +24,29 @@ export default class Modal {
     
     loading(loading) {
         if (loading) {
-            this._submitButton.textContent = 'Сохранение...';
+            this._submitButton.textContent = "Сохранение...";
         } else {
-            this._submitButton.textContent = 'Сохранить';
+            this._submitButton.textContent = "Сохранить";
         }
     }
 
     open() {
-        this._modal.classList.add('modal_is-open');
-        document.addEventListener('keydown', this._handlerEscClose);
+        this._modal.classList.add("modal_is-open");
+        document.addEventListener("keydown", this._handlerEscClose);
     }
 
     close() {
-        this._modal.classList.remove('modal_is-open');
-        document.removeEventListener('keydown', this._handlerEscClose);
+        this._modal.classList.remove("modal_is-open");
+        document.removeEventListener("keydown", this._handlerEscClose);
     }
 
     setEventListeners() {
-        this._modal.addEventListener('click', this._closeByOverlay.bind(this));
-        this._closeButton.addEventListener('click', this._handlerCloseButton.bind(this));
+        this._modal.addEventListener("click", this._closeByOverlay.bind(this));
+        this._closeButton.addEventListener("click", this._handlerCloseButton.bind(this));
 
     }
 
     removeEventListeners() {
-        this._modal.removeEventListener('click', this._closeByOverlay.bind(this));
+        this._modal.removeEventListener("click", this._closeByOverlay.bind(this));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

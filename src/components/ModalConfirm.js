@@ -1,9 +1,9 @@
-import Modal from './Modal.js';
+import Modal from "./Modal.js";
 
 export default class ModalConfirm extends Modal {
   constructor(submitButton) {
     super(submitButton);
-    this._formSubmit = this._modal.querySelector('.modal__form');
+    this._formSubmit = this._modal.querySelector(".modal__form");
   }
 
   handlerSubmit(handlerFormSubmit) {
@@ -12,11 +12,10 @@ export default class ModalConfirm extends Modal {
   
   setEventListeners() {
     super.setEventListeners();
-    this._formSubmit.addEventListener('submit', (evt) => {
+    this._formSubmit.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit();
       this.close();
     });
   }
 }
-

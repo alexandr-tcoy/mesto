@@ -11,7 +11,6 @@ export default class Api {
     return Promise.reject(new Error(`Ошибка: ${res.status}`))
   }
 
-
   getInitialCards() {
     return fetch(`${this.url}/cards`, {
         headers: this.headers
@@ -21,7 +20,7 @@ export default class Api {
 
   getUserInfo() {
     return fetch(`${this.url}/users/me`, {
-        method: 'GET',
+        method: "GET",
         headers: this.headers
       })
       .then(res => this._getResponseData(res))
@@ -29,7 +28,7 @@ export default class Api {
 
   postNewCard(data) {
     return fetch(`${this.url}/cards`, {
-        method: 'POST',
+        method: "POST",
         headers: this.headers,
         body: JSON.stringify({
           name: data.place,
@@ -41,7 +40,7 @@ export default class Api {
 
   setUserInfo(data) {
     return fetch(`${this.url}/users/me`, {
-        method: 'PATCH',
+        method: "PATCH",
         headers: this.headers,
         body: JSON.stringify({
           name: data.name,
@@ -53,7 +52,7 @@ export default class Api {
   
   setUserAvatar(data) {
     return fetch(`${this.url}/users/me/avatar`, {
-        method: 'PATCH',
+        method: "PATCH",
         headers: this.headers,
         body: JSON.stringify({
           avatar: data.avatar
@@ -64,20 +63,18 @@ export default class Api {
       })
   }
 
-
   deleteCard(cardID) {
     return fetch(`${this.url}/cards/${cardID}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: this.headers
     }).then(res => {
       return this._getResponseData(res);
     })
   }
 
-
   likeCard(cardId) {
     return fetch(`${this.url}/cards/likes/${cardId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: this.headers
       })
       .then(res => {
@@ -87,7 +84,7 @@ export default class Api {
 
   dislikeCard(cardId) {
     return fetch(`${this.url}/cards/likes/${cardId}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: this.headers
       })
       .then(res => {
