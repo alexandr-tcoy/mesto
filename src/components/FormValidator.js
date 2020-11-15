@@ -1,13 +1,14 @@
 export default class FormValidator {
-  constructor(element, formElement) {
+  constructor(object, formElement) {
     this._formElement = formElement;
-    this._inputSelector = element.inputSelector;
-    this._submitButtonSelector = element.submitButtonSelector;
-    this._inactiveButtonClass = element.inactiveButtonClass;
-    this._inputErrorClass = element.inputErrorClass;
-    this._errorClass = element.errorClass;
+    this._inputSelector = object.inputSelector;
+    this._submitButtonSelector = object.submitButtonSelector;
+    this._inactiveButtonClass = object.inactiveButtonClass;
+    this._inputErrorClass = object.inputErrorClass;
+    this._errorClass = object.errorClass;
+    this._textErrorSelector = object.textErrorSelector;
   }
-  
+
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
 
@@ -58,12 +59,14 @@ export default class FormValidator {
 
     buttonElement.classList.add(this._inactiveButtonClass);
     buttonElement.disabled = true;
+
   }
 
   addButtonActive(buttonElement) {
 
     buttonElement.classList.remove(this._inactiveButtonClass);
     buttonElement.disabled = false;
+
   }
 
   _setEventListeners() {
@@ -87,7 +90,7 @@ export default class FormValidator {
       this._formElement.querySelectorAll(this._inputSelector)
     );
     const errorElement = Array.from(
-      this._formElement.querySelectorAll(".modal__form-text-error")
+      this._formElement.querySelectorAll(this._textErrorSelector)
     );
 
     inputElements.forEach((input) => {
@@ -104,3 +107,6 @@ export default class FormValidator {
     this._setEventListeners();
   }
 }
+
+
+

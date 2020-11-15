@@ -38,3 +38,10 @@
 @import url("../blocks/modal/__error_visible/modal__error_visible.css");
 @import url("../blocks/modal/__text/_type_error/modal__text_type_error.css");
 @import url("../blocks/modal/__form-field/modal__form-field.css");
+@import url("../blocks/element/__like-block/element__like-block.css");
+@import url("../blocks/element/__like-counter/element__like-counter.css");
+@import url("../blocks/profile/__photo/profile__photo.css");
+@import url("../blocks/profile/__avatar-edit/profile__avatar-edit.css");
+@import url("../blocks/modal/__delete-form/modal__delete-form.css");
+@import url("../blocks/element/__delete/_hidden/element__delete_hidden.css");
+@import url("../blocks/element/__delete/_visible/element__delete_visible.css");

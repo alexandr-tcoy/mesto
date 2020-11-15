@@ -13,14 +13,17 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img src="./images/jacques.jpg" alt="Жак-Ив Кусто(фото)" class="profile__avatar">
+        <div class="profile__photo">
+          <img src="./images/my.jpg" alt="Аватар" class="profile__avatar">
+          <button class="profile__avatar-edit"></button>
+        </div>  
         <div class="profile__field">
           <div class="profile__info">
             <div class="profile__line">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <h1 class="profile__title"></h1>
               <button type="submit" class="profile__edit"></button>
             </div>  
-            <p class="profile__subtitle">Исследователь океана</p>
+            <p class="profile__subtitle"></p>
           </div>
           <button type="submit" class="profile__button"></button>
         </div>  
@@ -32,6 +35,7 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+
     <div class="modal modal_type_edit">
       <div class="modal__container" novalidate>
         <button type="submit" class="modal__close-button"></button>
@@ -49,6 +53,7 @@
         </form>
       </div>
     </div> 
+
     <div class="modal modal_type_add">
       <div class="modal__container" novalidate>
         <button type="submit" class="modal__close-button"></button>
@@ -65,7 +70,8 @@
           <button type="submit" class="modal__button">Создать</button>
         </form>
       </div>
-    </div>  
+    </div> 
+
     <div class="modal modal_type_img">
       <div class="modal__figure">
         <button type="submit" class="modal__close-button"></button>  
@@ -73,17 +79,48 @@
         <h3 class="modal__under-title"></h3>
       </div>
     </div> 
+
   </div>
+
   <template class="template-card">
   <div class="element">
     <button type="submit" class="element__delete"></button>
     <img src="#" alt="#" class="element__photo">
     <div class="element__info">
       <h2 class="element__text"></h2>
-      <button type="submit" class="element__like"></button>
+      <div class="element__like-block">
+        <button type="submit" class="element__like"></button>
+        <span class="element__like-counter">0</span>
+      </div>
     </div>
   </div>
   </template>
+
+  <div class="modal modal_type_delete">
+    <div class="modal__container">
+      <button class="modal__close-button"></button>
+      <h2 class="modal__title">Вы уверены?</h2>
+      <form class="modal__form modal__delete-form">
+      <button type="submit" class="modal__button">Да</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal modal_type_avatar">
+    <div class="modal__container">
+      <h2 class="modal__title">Обновить аватар</h2>
+      <button class="modal__close-button" type="button"></button>
+      <form class="modal__form" action="#" novalidate>
+        <label class="modal__form-field">
+          <input class="modal__text modal__text_type_url" id='url-input' type="url" name="avatar" value=""
+            placeholder="Ссылка на картинку" autocomplete="off" required/>
+          <span class='modal__form-text-error' id='url-input-error'></span>
+        </label>
+      </form>
+      <button type="submit" class="modal__button">Сохранить</button>
+    </div>
+  </div>
+
   <!-- <script type="module" src="./scripts/index.js"></script>  -->
 </body>
 </html>
