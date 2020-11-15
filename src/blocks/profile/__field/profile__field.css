@@ -3,8 +3,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 882px;
-    max-width: 100%;
+    /* width: 882px;
+    max-width: 100%; */
+    max-width: 882px;
+    width: 100%;
 }
 
 @media screen and (max-width: 595px) {

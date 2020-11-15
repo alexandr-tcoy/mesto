@@ -3,8 +3,10 @@
     padding: 23px 64px 23px 64px;
     background-repeat: no-repeat;
     background-position: center;
-    width: 150px;
-    max-width: 100%;
+    /* width: 150px;
+    max-width: 100%; */
+    width: 100%;
+    max-width: 150px;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
     cursor: pointer;

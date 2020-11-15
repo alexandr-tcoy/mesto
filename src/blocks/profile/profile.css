@@ -1,6 +1,8 @@
 .profile {
-    width: 882px;
-    max-width: 100%;
+    /* width: 882px;
+    max-width: 100%; */
+    width: 100%;
+    max-width: 882px;
     margin: 0 auto;
     padding: 40px 0 51px 0;
     color: #FFFFFF;

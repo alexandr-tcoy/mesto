@@ -45,3 +45,4 @@
 @import url("../blocks/modal/__delete-form/modal__delete-form.css");
 @import url("../blocks/element/__delete/_hidden/element__delete_hidden.css");
 @import url("../blocks/element/__delete/_visible/element__delete_visible.css");
+@import url("../blocks/modal/__button/_delete/modal__button_delete.css");

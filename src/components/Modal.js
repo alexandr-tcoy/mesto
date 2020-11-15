@@ -11,7 +11,7 @@ export default class Modal {
             this.close();
         }
     }
-
+    
     _closeByOverlay(evt) {
         if (evt.target.classList.contains('modal')) {
             this.close();
