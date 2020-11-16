@@ -19,7 +19,7 @@ export default class UserInfo {
     getUserId() {
         return this._userId;
     }
-
+    
     setUserData(name, about, userId, avatar) {
         this._userName.textContent = name;
         this._userAbout.textContent = about;

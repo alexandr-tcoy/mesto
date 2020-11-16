@@ -56,32 +56,45 @@ const userProfile = new UserInfo({
   avatar: profileAvatar
 });
 
+// Promise.all([
+//   api.getUserInfo(),
+//   api.getInitialCards()
+// ])
+// .then((values) => {
+//   const [userData, items] = values;
+//   userProfile.setUserData(userData.name, userData.about, userData._id, userData.avatar);
+//   cardList.renderItems(userData, items);
+// })
+// .catch((err) => {
+//   console.log(err);
+// })
+
 Promise.all([
-    api.getUserInfo(),
-    api.getInitialCards()
-  ])
-  .then((values) => {
-    const [userData, items] = values;
-    userProfile.setUserData(userData.name, userData.about, userData._id, userData.avatar);
-    const initialCardList = new Section({
-        items: items,
-        renderer: (item) => {
-          const card = new Card({
-            data: item,
-            handleCardClick: handleCardClick,
-            handleLikeClick: globalHandleLikeCardClick,
-            handleDeleteButtonClick: handleDeleteCardClick
-          }, userProfile.getUserId(), ".template-card");
-          const cardElement = card.generateCard();
-          initialCardList.setItem(cardElement);
-        }
-      },
-      ".elements");
-    initialCardList.renderItems();
-  })
-  .catch((err) => {
-    console.log(err);
-  })
+  api.getUserInfo(),
+  api.getInitialCards()
+])
+.then((values) => {
+  const [userData, items] = values;
+  userProfile.setUserData(userData.name, userData.about, userData._id, userData.avatar);
+  const initialCardList = new Section({
+      items: items,
+      renderer: (item) => {
+        const card = new Card({
+          data: item,
+          handleCardClick: handleCardClick,
+          handleLikeClick: globalHandleLikeCardClick,
+          handleDeleteButtonClick: handleDeleteCardClick
+        }, userProfile.getUserId(), '.template-card');
+        const cardElement = card.generateCard();
+        initialCardList.setItem(cardElement);
+      }
+    },
+    '.elements');
+  initialCardList.renderItems();
+})
+.catch((err) => {
+  console.log(err);
+})
 
 const handleCardClick = (data) => {
   imgModal.open(data)
@@ -134,7 +147,7 @@ const renderCard = (item) => {
   }, userProfile.getUserId(), ".template-card");
   const cardElement = card.generateCard();
   cardList.addItem(cardElement);
-  return card;
+  // return card;
 }
 
 const cardList = new Section({
@@ -228,3 +241,4 @@ editProfileAvatar.addEventListener("click", () => {
   modalFormAvatarValidator.hideAllErrors();
   modalFormAvatarValidator.removeButtonActive(avatarModalButton);
 })
+
