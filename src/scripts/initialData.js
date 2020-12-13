@@ -1,57 +1,3 @@
-export const profileAvatar = document.querySelector(".profile__avatar");
-export const profileName = document.querySelector(".profile__title");
-export const profileAbout = document.querySelector(".profile__subtitle");
-export const openEditProfileModal = document.querySelector(".profile__edit");
-export const openAddPlaceModal = document.querySelector(".profile__button");
-export const editProfileAvatar = document.querySelector(".profile__avatar-edit");
-export const editProfileModal = document.querySelector(".modal_type_edit");
-export const closeEditProfileModal = document.querySelector(".modal__close-button");
-export const saveEditProfileModal = document.querySelector(".modal__button");
-export const formEditModal = editProfileModal.querySelector(".modal__form");
-export const inputName = formEditModal.querySelector(".modal__text_type_name");
-export const inputAbout = formEditModal.querySelector(".modal__text_type_about");
-export const addPlaceModal = document.querySelector(".modal_type_add");
-export const closeAddPlaceModal = addPlaceModal.querySelector(".modal__close-button");
-export const saveAddPlaceModal = addPlaceModal.querySelector(".modal__button");
-export const formAddModal = addPlaceModal.querySelector(".modal__form");
-export const inputPlace = addPlaceModal.querySelector(".modal__text_type_place");
-export const inputUrl = addPlaceModal.querySelector(".modal__text_type_url");
-export const imageModal = document.querySelector(".modal_type_img");
-export const closeImageModal = imageModal.querySelector(".modal__close-button");
-export const imgModal = imageModal.querySelector(".modal__img");
-export const titleImageModal = imageModal.querySelector(".modal__under-title");
-export const deleteModal = document.querySelector(".modal_type_delete");
-export const deleteModalButton = deleteModal.querySelector(".modal__button");
-export const avatarModal = document.querySelector(".modal_type_avatar");
-export const avatarModalButton = avatarModal.querySelector(".modal__button");
-export const elements = document.querySelector(".elements");
-export const initialCards = [
-    // {  
-    //     name: "Байкал",  
-    //     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg"  
-    // },  
-    // {  
-    //     name: "Холмогорский район",  
-    //     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg"  
-    // },  
-    // {  
-    //     name: "Камчатка",  
-    //     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg"  
-    // },  
-    // {  
-    //     name: "Иваново",  
-    //     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"  
-    // },  
-    // {  
-    //     name: "Челябинская область",  
-    //     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg"  
-    // },  
-    // {  
-    //     name: "Архыз",  
-    //     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"  
-    // }  
-];
-
 export const validationConfig = {
     formSelector: ".modal__form",
     inputSelector: ".modal__text",
@@ -59,5 +5,53 @@ export const validationConfig = {
     inactiveButtonClass: "modal__button_disabled",
     inputErrorClass: "modal__text_type_error",
     errorClass: "modal__error_visible",
-    textErrorSelector: ".modal__form-text-error"
 }
+
+const editButton = document.querySelector('.profile__edit');
+const editModal = '.modal_type_edit';
+const addButton = document.querySelector('.profile__button');
+const addModal = '.modal_type_add';
+const formEdit = document.querySelector('.modal__form');
+const formAdd = document.querySelector('.modal__form');
+const avatarButton = document.querySelector('.profile__avatar-edit');
+const avatarModal = '.modal_type_avatar';
+const formAvatar = document.querySelector('.modal__form');
+const imageModal = '.modal_type_img';
+const nameInput = document.querySelector('.modal__text_type_name');
+const jobInput = document.querySelector('.modal__text_type_about');
+const profileName = '.profile__title';
+const profileAbout = '.profile__subtitle';
+const profileAvatar = '.profile__avatar';
+const listElements = '.elements';
+const deleteCard = '.modal_type_delete';
+const cardTemplateSelector = '.template-card';
+const submitCard = document.querySelector('.modal__button_add');
+const submitInfo = document.querySelector('.modal__button_edit');
+const submitAvatar = document.querySelector('.modal__button_avatar');
+
+
+export {
+    editButton,
+    editModal,
+    addButton,
+    addModal,
+    avatarButton,
+    avatarModal,
+    formEdit,
+    formAdd,
+    formAvatar,
+    imageModal,
+    nameInput,
+    jobInput,
+    profileName,
+    profileAbout,
+    profileAvatar,
+    listElements,
+    deleteCard,
+    submitCard,
+    submitInfo,
+    submitAvatar,
+    cardTemplateSelector,
+}
+
+export const initialCards = [];

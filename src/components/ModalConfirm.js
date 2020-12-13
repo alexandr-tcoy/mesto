@@ -1,21 +1,20 @@
-import Modal from "./Modal.js";
+import { Modal } from '../components/Modal.js';
 
-export default class ModalConfirm extends Modal {
-  constructor(submitButton) {
-    super(submitButton);
-    this._formSubmit = this._modal.querySelector(".modal__form");
-  }
+export class ModalConfirm extends Modal {
+    constructor({ modalSelector }) {
+        super(modalSelector);
+    }
 
-  handlerSubmit(handlerFormSubmit) {
-    this._handleFormSubmit = handlerFormSubmit;
-  }
-  
-  setEventListeners() {
-    super.setEventListeners();
-    this._formSubmit.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this._handleFormSubmit();
-      // this.close();
-    });
-  }
+    setEventListeners() {
+        super.setEventListeners();
+        this._form = this._element.querySelector('.modal__form');
+        this._form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            this._handleSubmit();
+        });
+    }
+
+    setFormSubmitHandler(handle) {
+        this._handleSubmit = handle;
+    }
 }

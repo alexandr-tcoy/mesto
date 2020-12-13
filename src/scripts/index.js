@@ -1,244 +1,216 @@
-import "../pages/index.css";
-import Card from "../components/Card.js";
+import '../pages/index.css';
 
+import { Api } from '../components/Api.js';
+import { validationConfig } from '../scripts/initialData.js';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
+import { ModalWithForm } from '../components/ModalWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import { ModalWithImage } from '../components/ModalWithImage.js';
+import { ModalConfirm } from '../components/ModalConfirm.js'
 import {
-  validationConfig,
-  editProfileModal,
-  imageModal,
-  addPlaceModal,
-  openEditProfileModal,
-  openAddPlaceModal,
-  inputName,
-  inputAbout,
-  profileAbout,
-  profileName,
-  saveAddPlaceModal,
-  saveEditProfileModal,
-  deleteModal,
-  editProfileAvatar,
-  avatarModal,
-  avatarModalButton,
-  profileAvatar,
-  initialCards
-} from "../scripts/initialData.js";
-
-import FormValidator from "../components/FormValidator.js";
-
-import Section from "../components/Section.js";
-import ModalWithImage from "../components/ModalWithImage.js";
-import ModalWithForm from "../components/ModalWithForm.js";
-import UserInfo from "../components/UserInfo.js";
-import Api from "../components/Api.js";
-import ModalConfirm from "../components/ModalConfirm";
-
-const modalProfileFormValidator = new FormValidator(validationConfig, editProfileModal);
-modalProfileFormValidator.enableValidation();
-
-const modalPlaceFormValidator = new FormValidator(validationConfig, addPlaceModal);
-modalPlaceFormValidator.enableValidation();
-
-const modalFormAvatarValidator = new FormValidator(validationConfig, avatarModal);
-modalFormAvatarValidator.enableValidation();
+    initialCards,
+    editButton,
+    editModal,
+    avatarButton,
+    addButton,
+    addModal,
+    avatarModal,
+    formEdit,
+    formAdd,
+    formAvatar,
+    imageModal,
+    nameInput,
+    jobInput,
+    profileName,
+    profileAbout,
+    profileAvatar,
+    listElements,
+    deleteCard,
+    submitCard,
+    submitInfo,
+    submitAvatar,
+    cardTemplateSelector
+} from '../scripts/initialData.js';
 
 const api = new Api({
-  url: "https://mesto.nomoreparties.co/v1/cohort-17",
-  headers: {
-    authorization: "74d3db70-90e4-454f-a678-b0b06c14da91",
-    "Content-Type": "application/json"
-  }
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-18',
+    headers: {
+        authorization: 'c85d6054-6c96-4dd2-ae06-9bba35f31e9d',
+        'Content-Type': 'application/json'
+    }
 });
 
-const imgModal = new ModalWithImage(imageModal);
+const profileValidator = new FormValidator(validationConfig, formEdit);
+const cardValidator = new FormValidator(validationConfig, formAdd);
+const avatarValidator = new FormValidator(validationConfig, formAvatar);
+const modalImage = new ModalWithImage(imageModal);
+const userProfile = new UserInfo({ name: profileName, about: profileAbout, avatar: profileAvatar });
+const deleteCardModal = new ModalConfirm({ modalSelector: deleteCard });
+let userId = '';
 
-const userProfile = new UserInfo({
-  name: profileName,
-  about: profileAbout,
-  avatar: profileAvatar
-});
-
-// Promise.all([
-//   api.getUserInfo(),
-//   api.getInitialCards()
-// ])
-// .then((values) => {
-//   const [userData, items] = values;
-//   userProfile.setUserData(userData.name, userData.about, userData._id, userData.avatar);
-//   cardList.renderItems(userData, items);
-// })
-// .catch((err) => {
-//   console.log(err);
-// })
-
-Promise.all([
-  api.getUserInfo(),
-  api.getInitialCards()
-])
-.then((values) => {
-  const [userData, items] = values;
-  userProfile.setUserData(userData.name, userData.about, userData._id, userData.avatar);
-  const initialCardList = new Section({
-      items: items,
-      renderer: (item) => {
-        const card = new Card({
-          data: item,
-          handleCardClick: handleCardClick,
-          handleLikeClick: globalHandleLikeCardClick,
-          handleDeleteButtonClick: handleDeleteCardClick
-        }, userProfile.getUserId(), '.template-card');
-        const cardElement = card.generateCard();
-        initialCardList.setItem(cardElement);
-      }
-    },
-    '.elements');
-  initialCardList.renderItems();
-})
-.catch((err) => {
-  console.log(err);
-})
-
-const handleCardClick = (data) => {
-  imgModal.open(data)
-}
-
-const globalHandleLikeCardClick = (card) => {
-  if (card.isLiked()) {
-    api.dislikeCard(card.id())
-      .then((data) => {
-        card.setLikesInfo(data)
-      })
-      .catch((err) => {
+Promise.all([api.getInitialCards(), api.getUserData()])
+    .then((result) => {
+        const [items, userInfo] = result;
+        userId = userInfo._id;
+        cardList.rendererItems(items);
+        userProfile.setUserInfo(userInfo);
+    })
+    .catch((err) => {
         console.log(err);
-      })
-  } else {
-    api.likeCard(card.id())
-      .then((data) => {
-        card.setLikesInfo(data)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-}
+    });
+  
+const renderer = (item) => {
+    const card = new Card(item, userId, cardTemplateSelector, addLike, deleteLike, handleDelete, handleCardClick);
+    const cardElement = card.genetareCard();
+    cardList.addItem(cardElement);
 
-const handleDeleteCardClick = (card) => {
-  deleteModalConfirmation.open();
-  deleteModalConfirmation.handlerSubmit(() => {
-    deleteModalConfirmation.loading(true);
-    api.deleteCard(card.id())
-      .then((data) => {
-        card.deleteElement(data);
-        deleteModalConfirmation.close();
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        deleteModalConfirmation.loading(false);
-      })
-  })
-}
+    function handleCardClick(data) {
+        modalImage.open(data);
+    }
 
-const renderCard = (item) => {
-  const card = new Card({
-    data: item,
-    handleCardClick: handleCardClick,
-    handleLikeClick: globalHandleLikeCardClick,
-    handleDeleteButtonClick: handleDeleteCardClick
-  }, userProfile.getUserId(), ".template-card");
-  const cardElement = card.generateCard();
-  cardList.addItem(cardElement);
-  // return card;
-}
+    function handleDelete(item) {
+        deleteCardModal.setFormSubmitHandler(() => {
+            api.deleteCard(item._id)
+                .then(() => {
+                    card.deletePhoto();
+                    deleteCardModal.close();
+                })
+                .catch((err) => {
+                    console.log(`${err}`)
+                });
+        })
+        deleteCardModal.open();
+    }
 
+    function addLike(cardId) {
+        api.addLike(cardId)
+            .then(() => {
+                console.log('you added like')
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    function deleteLike(cardId) {
+        api.deleteLike(cardId)
+            .then(() => {
+                console.log('you removed like')
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};
 const cardList = new Section({
     items: initialCards,
-  },
-  ".elements"
+    renderer
+},
+    listElements
 );
 
-const addModalPlace = new ModalWithForm({
-  handleFormSubmit: (item) => {
-    addModalPlace.loading(true);
-    api.postNewCard(item)
-      .then((item) => {
-        renderCard(item);
-        addModalPlace.close();
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        addModalPlace.loading(false);
-      })
-  }
-}, addPlaceModal);
 
-const editModalProfile = new ModalWithForm({
-  handleFormSubmit: ({
-    name,
-    about
-  }) => {
-    editModalProfile.loading(true);
-    api.setUserInfo({
-        name: name,
-        about: about
-      })
-      .then((res) => {
-        userProfile.setUserData(res.name, res.about, res._id, res.avatar);
-        editModalProfile.close();
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        editModalProfile.loading(false);
-      })
-  }
-}, editProfileModal)
+const addCardModal = new ModalWithForm({
+    modalSelector: addModal,
+    handleFormSubmit: (item) => {
+        renderLoading(true, submitCard);
+        api.postNewCard(item)
+            .then((item) => {
+                renderer(item);
+                addCardModal.close();
+                console.log('the card was uploaded')
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                renderLoading(false, submitCard);
+            });
+    }
+});
 
-const modalFormAvatar = new ModalWithForm({
-  handleFormSubmit: ({
-    avatar
-  }) => {
-    modalFormAvatar.loading(true);
-    api.setUserAvatar({
-        avatar: avatar
-      })
-      .then((res) => {
-        userProfile.setUserData(res.name, res.about, res._id, res.avatar);
-        modalFormAvatar.close();
-      })
-      .catch(err => console.log(err))
-      .finally(() => {
-        modalFormAvatar.loading(false);
-      })
-  }
-}, avatarModal)
 
-const deleteModalConfirmation = new ModalConfirm(deleteModal);
 
-imgModal.setEventListeners();
-addModalPlace.setEventListeners();
-editModalProfile.setEventListeners();
-deleteModalConfirmation.setEventListeners();
-modalFormAvatar.setEventListeners();
+const profileModal = new ModalWithForm({
+    modalSelector: editModal,
+    handleFormSubmit: (item) => {
+        renderLoading(true, submitInfo);
+        api.setUserData(item)
+            .then((item) => {
+                userProfile.setUserInfo(item);
+                profileModal.close();
+                console.log('the profile info was updated')
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                renderLoading(false, submitInfo);
+            });
+    }
+});
 
-openAddPlaceModal.addEventListener("click", () => {
-  addModalPlace.open();
-  modalPlaceFormValidator.hideAllErrors();
-  modalPlaceFormValidator.removeButtonActive(saveAddPlaceModal);
-})
 
-openEditProfileModal.addEventListener("click", () => {
-  const profileInfo = userProfile.getUserData();
 
-  inputName.value = profileInfo.name;
-  inputAbout.value = profileInfo.about;
+const addAvatarModal = new ModalWithForm({
+    modalSelector: avatarModal,
+    handleFormSubmit: (item) => {
+        renderLoading(true, submitAvatar);
+        api.setUserAvatarData(item)
+            .then((item) => {
+                userProfile.setUserInfo(item);
+                addAvatarModal.close();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                renderLoading(false, submitAvatar);
+            });
+    }
+});
 
-  modalProfileFormValidator.hideAllErrors();
-  modalProfileFormValidator.addButtonActive(saveEditProfileModal);
-  editModalProfile.open()
-})
+const removeFormErrors = (formElement) => {
+    cardValidator.clearFormError(formElement, validationConfig);
+    avatarValidator.clearFormError(formElement, validationConfig);
+}
 
-editProfileAvatar.addEventListener("click", () => {
-  modalFormAvatar.open();
-  modalFormAvatarValidator.hideAllErrors();
-  modalFormAvatarValidator.removeButtonActive(avatarModalButton);
-})
+addButton.addEventListener('click', () => {
+    formAdd.reset();
+    removeFormErrors(addModal);
+    addCardModal.open();
+});
 
+editButton.addEventListener('click', () => {
+    const user = userProfile.getUserInfo();
+    nameInput.value = user.name;
+    jobInput.value = user.about;
+    profileValidator.clearFormError();
+    profileModal.open();
+});
+
+avatarButton.addEventListener('click', () => {
+    addAvatarModal.open();
+    formAvatar.reset();
+    removeFormErrors(avatarModal);
+});
+
+function renderLoading(isLoading, button) {
+    if (isLoading) {
+      button.textContent = 'Сохранение...';
+    } else {
+      button.textContent = 'Сохранить';
+    }
+}
+
+addAvatarModal.setEventListeners();
+profileModal.setEventListeners();
+addCardModal.setEventListeners();
+modalImage.setEventListeners();
+deleteCardModal.setEventListeners();
+
+profileValidator.enableValidation();
+cardValidator.enableValidation();
+avatarValidator.enableValidation();

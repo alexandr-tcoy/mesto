@@ -1,52 +1,33 @@
-export default class Modal {
+export class Modal {
     constructor(modalSelector) {
-        this._modal = modalSelector;
-        this._closeButton = this._modal.querySelector(".modal__close-button");
-        this._submitButton = this._modal.querySelector(".modal__button");
-        this._handlerEscClose = this._handlerEscClose.bind(this);
+        this._element = document.querySelector(modalSelector);
     }
 
-    _handlerEscClose(evt) {
-        if (evt.key === "Escape") {
-            this.close();
-        }
-    }
-    
-    _closeByOverlay(evt) {
-        if (evt.target.classList.contains("modal")) {
-            this.close();
-        }
-    }
-
-    _handlerCloseButton() {
-        this.close()
-    }
-    
-    loading(loading) {
-        if (loading) {
-            this._submitButton.textContent = "Сохранение...";
-        } else {
-            this._submitButton.textContent = "Сохранить";
+    _handleEscClose(evt) {
+        if (evt.key === 'Escape') {
+            this.close()
         }
     }
 
     open() {
-        this._modal.classList.add("modal_is-open");
-        document.addEventListener("keydown", this._handlerEscClose);
+        this._element.classList.add('modal_is-open');
+        document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
     }
 
     close() {
-        this._modal.classList.remove("modal_is-open");
-        document.removeEventListener("keydown", this._handlerEscClose);
+        this._element.classList.remove('modal_is-open');
+        document.removeEventListener('keydown', (evt) => this._handleEscClose(evt));
     }
 
     setEventListeners() {
-        this._modal.addEventListener("click", this._closeByOverlay.bind(this));
-        this._closeButton.addEventListener("click", this._handlerCloseButton.bind(this));
-
-    }
-
-    removeEventListeners() {
-        this._modal.removeEventListener("click", this._closeByOverlay.bind(this));
+        this._element.querySelector('.modal__close-button').addEventListener('click', () => {
+            this.close();
+        })
+        this._element.addEventListener('mousedown', (evt) => {
+            if (evt.target !== evt.currentTarget) {
+                return
+            }
+            this.close();
+        })
     }
 }

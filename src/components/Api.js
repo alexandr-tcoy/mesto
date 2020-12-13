@@ -1,94 +1,87 @@
-export default class Api {
-  constructor(config) {
-    this.url = config.url;
-    this.headers = config.headers;
+export class Api {
+  constructor(options) {
+      this._baseUrl = options.baseUrl;
+      this._headers = options.headers;
   }
 
-  _getResponseData(res) {
-    if (res.ok) {
-      return res.json()
-    }
-    return Promise.reject(new Error(`Ошибка: ${res.status}`))
+  _checkStatus(res) {
+      if (res.ok) {
+          return res.json()
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
   }
 
   getInitialCards() {
-    return fetch(`${this.url}/cards`, {
-        headers: this.headers
+      return fetch(`${this._baseUrl}/cards`, {
+          headers: this._headers
       })
-      .then(res => this._getResponseData(res))
+          .then(this._checkStatus);
   }
 
-  getUserInfo() {
-    return fetch(`${this.url}/users/me`, {
-        method: "GET",
-        headers: this.headers
+  getUserData() {
+      return fetch(`${this._baseUrl}/users/me`, {
+          headers: this._headers,
+
       })
-      .then(res => this._getResponseData(res))
+          .then(this._checkStatus);
   }
 
   postNewCard(data) {
-    return fetch(`${this.url}/cards`, {
-        method: "POST",
-        headers: this.headers,
-        body: JSON.stringify({
-          name: data.place,
-          link: data.url
-        })
+      return fetch(`${this._baseUrl}/cards`, {
+        method: 'POST',  
+        headers: this._headers,
+          body: JSON.stringify({
+              name: data.place,
+              link: data.url
+          })
       })
-      .then(res => this._getResponseData(res))
+          .then(this._checkStatus);
   }
 
-  setUserInfo(data) {
-    return fetch(`${this.url}/users/me`, {
-        method: "PATCH",
-        headers: this.headers,
-        body: JSON.stringify({
-          name: data.name,
-          about: data.about
-        })
+  setUserData(data) {
+      return fetch(`${this._baseUrl}/users/me`, {
+        method: 'PATCH',  
+        headers: this._headers,  
+          body: JSON.stringify({
+              name: data.name,
+              about: data.about
+          })
       })
-      .then(res => this._getResponseData(res))
-  }
-  
-  setUserAvatar(data) {
-    return fetch(`${this.url}/users/me/avatar`, {
-        method: "PATCH",
-        headers: this.headers,
-        body: JSON.stringify({
-          avatar: data.avatar
-        })
-      })
-      .then(res => {
-        return this._getResponseData(res);
-      })
+          .then(this._checkStatus);
   }
 
-  deleteCard(cardID) {
-    return fetch(`${this.url}/cards/${cardID}`, {
-      method: "DELETE",
-      headers: this.headers
-    }).then(res => {
-      return this._getResponseData(res);
-    })
+  setUserAvatarData(data) {
+      return fetch(`${this._baseUrl}/users/me/avatar`, {
+          headers: this._headers,
+          method: 'PATCH',
+          body: JSON.stringify({
+              avatar: data.avatar
+          })
+      })
+          .then(this._checkStatus);
   }
 
-  likeCard(cardId) {
-    return fetch(`${this.url}/cards/likes/${cardId}`, {
-        method: "PUT",
-        headers: this.headers
+  deleteCard(cardId) {
+      return fetch(`${this._baseUrl}/cards/${cardId}`, {
+          headers: this._headers,
+          method: 'DELETE'
       })
-      .then(res => {
-        return this._getResponseData(res);
-      })
+          .then(this._checkStatus);
   }
 
-  dislikeCard(cardId) {
-    return fetch(`${this.url}/cards/likes/${cardId}`, {
-        method: "DELETE",
-        headers: this.headers
+  addLike(cardId) {
+      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+          method: 'PUT',
+          headers: this._headers
       })
-      .then(res => {
-        return this._getResponseData(res);
+          .then(this._checkStatus);
+  }
+
+  deleteLike(cardId) {
+      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+          method: 'DELETE',
+          headers: this._headers
       })
+          .then(this._checkStatus);
   }
 }
