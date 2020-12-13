@@ -51,7 +51,7 @@
       <div class="modal__container" novalidate>
         <button type="submit" class="modal__close-button"></button>
         <h2 class="modal__title">Редактировать профиль</h2>
-        <form action="#" class="modal__form" name="edit">
+        <form action="#" class="modal__form modal__form_edit" name="edit">
           <label class="modal__form-field">
             <input class="modal__text modal__text_type_name" name="name" id="name-input" value="Жак-Ив Кусто" type="text"  minlength="2" maxlength="40" autocomplete="off" required>
             <span id="name-input-error" class="modal__form-text-error"></span>
@@ -70,7 +70,7 @@
       <div class="modal__container" novalidate>
         <button type="submit" class="modal__close-button"></button>
         <h2 class="modal__title">Новое место</h2>
-        <form action="#" class="modal__form" name="add">
+        <form action="#" class="modal__form modal__form_add" name="add">
           <label class="modal__form-field">
             <input class="modal__text modal__text_type_place" name="place" id="place-input" placeholder="Название" type="text" minlength="1" maxlength="30" autocomplete="off" required>
             <span id="place-input-error" class="modal__form-text-error"></span>
@@ -101,7 +101,7 @@
       <div class="modal__container">
         <h2 class="modal__title">Обновить аватар</h2>
         <button class="modal__close-button" type="button"></button>
-        <form class="modal__form" action="#" novalidate>
+        <form class="modal__form modal__form_avatar" action="#" novalidate>
           <label class="modal__form-field">
             <input class="modal__text modal__text_type_url" id="url-input" type="url" name="avatar" value=""
               placeholder="Ссылка на картинку" autocomplete="off" required/>
